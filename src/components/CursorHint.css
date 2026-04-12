@@ -1,0 +1,33 @@
+/* ═══════════════════════════════════════════════
+   CURSOR HINT — auto-animated hand pointer
+═══════════════════════════════════════════════ */
+
+.cursor-hint {
+  position: fixed;
+  top: 0; left: 0;          /* motion x/y offset from here */
+  z-index: 99990;
+  pointer-events: none;
+  transform-origin: 30% 10%; /* pivot near fingertip */
+  filter:
+    drop-shadow(0 2px 8px rgba(0,0,0,0.45))
+    drop-shadow(0 0 24px rgba(255,255,255,0.15));
+  will-change: transform, opacity;
+}
+
+.cursor-hint__hand {
+  display: block;
+  /* slight rotation — looks natural */
+  transform: rotate(-10deg);
+  transform-origin: center;
+}
+
+/* Ripple ring that pulses on tap */
+.cursor-hint__ripple {
+  position: absolute;
+  top: 4px; left: 4px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.7);
+  transform-origin: center;
+  pointer-events: none;
+}

@@ -20,6 +20,7 @@ const LABELS = {
   drag:    '‹ drag ›',
   view:    '‹ view ›',
   book:    '‹ book now ›',
+  contact: '‹ contact ›',
   default: '',
 };
 

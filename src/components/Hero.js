@@ -12,36 +12,51 @@ export default function Hero() {
       <div className="hero-overlay-bg" />
 
       <div className="hero-text-overlay">
-        {/* ── Headline ─────────────────────────── */}
+
+        {/* Eyebrow */}
+        <span className="hero-overlay__eyebrow">
+          <span className="hero-overlay__eyebrow-line" />
+          Gayan C. Silva
+          <span className="hero-overlay__eyebrow-line" />
+        </span>
+
+        {/* Headline */}
         <div className="hero-overlay__headline">
-          <span className="hero-overlay__line-one">
+          <span className="hero-overlay__row hero-overlay__row--top">
             <span className="hero-overlay__serif">YOUR</span>
-            <span className="hero-overlay__script">Crafted</span>
-            <span className="hero-overlay__serif">WEDDING</span>
+            <span className="hero-overlay__serif hero-overlay__serif--spaced">WEDDING</span>
           </span>
-          <span className="hero-overlay__line-two">PHOTO EDITOR</span>
+
+          <span className="hero-overlay__script-wrap">
+            <span className="hero-overlay__script">Crafted</span>
+          </span>
+
+          <span className="hero-overlay__row hero-overlay__row--bottom">
+            <span className="hero-overlay__serif hero-overlay__serif--wide">PHOTO&nbsp;&nbsp;EDITOR</span>
+          </span>
         </div>
 
-        {/* ── Ornament ─────────────────────────── */}
+        {/* Divider */}
         <div className="hero-overlay__ornament">
           <span className="hero-overlay__orn-line" />
           <span className="hero-overlay__orn-diamond" />
           <span className="hero-overlay__orn-line" />
         </div>
 
-        {/* ── Tagline ──────────────────────────── */}
+        {/* Tagline */}
         <p className="hero-overlay__tagline">
           Your moments are precious — let me preserve every detail with the care they deserve.
-          I handle the editing so you can focus on what matters most.
         </p>
 
-        {/* ── CTA ──────────────────────────────── */}
+        {/* CTA */}
         <button className="hero-overlay__cta" onClick={scrollToPortfolio}>
           <span>View My Work</span>
-          <svg width="20" height="10" viewBox="0 0 20 10" fill="none">
-            <path d="M0 5h18M13 1l5 4-5 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="22" height="10" viewBox="0 0 22 10" fill="none">
+            <path d="M0 5h20M15 1l5 4-5 4" stroke="currentColor" strokeWidth="1.2"
+              strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
+
       </div>
 
       <div className="hero__scroll">
