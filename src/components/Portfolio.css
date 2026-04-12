@@ -1,0 +1,195 @@
+/* ═══════════════════════════════════════════════
+   PORTFOLIO — cinematic slideshow
+═══════════════════════════════════════════════ */
+.portfolio {
+  background: #1A1A1A;
+  padding: 120px 52px 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Section Header ──────────────────────────── */
+.portfolio__header { text-align: center; margin-bottom: 64px; }
+
+.portfolio__eyebrow {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.44em;
+  color: #777777;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.portfolio__title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(32px, 5vw, 62px);
+  font-weight: 600;
+  color: #FAFAFA;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.portfolio__ornament {
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+}
+.portfolio__ornament-line {
+  display: block; width: 60px; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(120,120,120,0.4));
+}
+.portfolio__ornament-line:last-child {
+  background: linear-gradient(to left, transparent, rgba(120,120,120,0.4));
+}
+.portfolio__ornament-script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 22px; color: rgba(120,120,120,0.5);
+}
+
+/* ── Stage ───────────────────────────────────── */
+.portfolio__stage {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* ── Slides ──────────────────────────────────── */
+.portfolio__slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  overflow: hidden;
+}
+.portfolio__slide--active { opacity: 1; }
+
+.portfolio__slide-img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transform-origin: center center;
+}
+.portfolio__slide--active .portfolio__slide-img {
+  animation: kenburns 7s ease-in-out forwards;
+}
+@keyframes kenburns {
+  0%   { transform: scale(1)    translate(0%,   0%); }
+  100% { transform: scale(1.09) translate(-1.5%,-1%); }
+}
+
+/* ── Gradient overlay ────────────────────────── */
+.portfolio__overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to top, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.2) 40%, transparent 70%),
+    linear-gradient(to right, rgba(10,10,10,0.18) 0%, transparent 30%);
+  pointer-events: none; z-index: 2;
+}
+
+/* ── Slide info ──────────────────────────────── */
+.portfolio__info {
+  position: absolute;
+  bottom: 44px; left: 44px;
+  z-index: 4;
+}
+.portfolio__info-location {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 0.32em;
+  color: rgba(180,180,180,0.8);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.portfolio__info-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 500;
+  color: #FAFAFA;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+/* ── Arrows ──────────────────────────────────── */
+.portfolio__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 5;
+  width: 52px; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(200,200,200,0.2);
+  color: rgba(240,240,240,0.75);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+.portfolio__arrow:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(200,200,200,0.5);
+  color: #FFFFFF;
+}
+.portfolio__arrow--prev { left: 24px; }
+.portfolio__arrow--next { right: 24px; }
+
+/* ── Progress bar ────────────────────────────── */
+.portfolio__progress {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(150,150,150,0.12);
+  z-index: 5; overflow: hidden;
+}
+.portfolio__progress-bar {
+  height: 100%; width: 100%;
+  background: #AAAAAA;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.portfolio__progress-bar--running {
+  animation: slide-progress 5s linear forwards;
+}
+@keyframes slide-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Dots ────────────────────────────────────── */
+.portfolio__dots {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-top: 32px;
+}
+.portfolio__dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(150,150,150,0.25);
+  border: none; padding: 0;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  flex-shrink: 0;
+}
+.portfolio__dot--active {
+  background: #AAAAAA;
+  width: 22px; border-radius: 3px;
+}
+
+/* ── Counter ─────────────────────────────────── */
+.portfolio__counter {
+  text-align: center; margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; letter-spacing: 0.24em;
+  color: rgba(150,150,150,0.3);
+}
+.portfolio__counter-current {
+  color: rgba(150,150,150,0.65);
+  font-weight: 600;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 768px) {
+  .portfolio { padding: 80px 24px 72px; }
+  .portfolio__stage { aspect-ratio: 4 / 5; }
+  .portfolio__arrow { width: 40px; height: 40px; }
+  .portfolio__arrow--prev { left: 12px; }
+  .portfolio__arrow--next { right: 12px; }
+  .portfolio__info { bottom: 28px; left: 24px; }
+}

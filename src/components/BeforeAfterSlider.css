@@ -1,0 +1,96 @@
+/* ═══════════════════════════════════════════════
+   BEFORE / AFTER SLIDER — monochromatic
+═══════════════════════════════════════════════ */
+.ba-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5/4;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.02);
+  box-shadow:
+    0 1px 2px rgba(255,255,255,0.6),
+    inset 0 6px 12px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  transform: translateZ(0);
+}
+
+.ba-slider::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 20px;
+  box-shadow:
+    inset 0 12px 30px rgba(0,0,0,0.08),
+    inset 0 3px 8px rgba(0,0,0,0.05);
+  pointer-events: none; z-index: 20;
+}
+
+.ba-slider--dragging { cursor: grabbing; }
+
+.ba-slider__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block; pointer-events: none;
+}
+
+.ba-slider__before-wrap {
+  position: absolute; inset: 0;
+  overflow: hidden; z-index: 2;
+  transition: clip-path 0.02s linear;
+}
+
+/* Divider — monochrome line */
+.ba-slider__divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: #AAAAAA;
+  transform: translateX(-50%);
+  z-index: 10; cursor: col-resize;
+  box-shadow: 0 0 8px 1px rgba(150,150,150,0.4);
+}
+
+/* Handle */
+.ba-slider__handle {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #333333;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.9);
+  box-shadow:
+    0 0 0 4px rgba(80,80,80,0.2),
+    0 0 18px 4px rgba(80,80,80,0.3),
+    0 2px 12px rgba(0,0,0,0.25);
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.ba-slider--dragging .ba-slider__handle {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scale(1.12);
+  box-shadow:
+    0 0 0 6px rgba(80,80,80,0.15),
+    0 0 28px 8px rgba(80,80,80,0.4),
+    0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Labels */
+.ba-slider__label {
+  position: absolute; bottom: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  padding: 5px 12px; pointer-events: none; z-index: 8;
+}
+.ba-slider__label--before { left: 14px; }
+.ba-slider__label--after  { right: 14px; }

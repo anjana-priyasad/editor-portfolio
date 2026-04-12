@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════════════════
+   CUSTOM CURSOR — monochromatic
+═══════════════════════════════════════════════ */
+
+* { cursor: none !important; }
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+}
+
+/* ── Dot ──────────────────────────────────────── */
+.cursor-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #333333;
+  box-shadow: 0 0 6px 2px rgba(50,50,50,0.4);
+  transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+}
+.cursor-dot--active {
+  width: 4px; height: 4px;
+  background: #111111;
+  box-shadow: 0 0 12px 4px rgba(30,30,30,0.5);
+}
+
+/* ── Ring ─────────────────────────────────────── */
+.cursor-ring {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(80,80,80,0.35);
+  display: flex; align-items: center; justify-content: center;
+  transition:
+    width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+.cursor-ring--active {
+  width: 76px; height: 76px;
+  border-color: rgba(50,50,50,0.6);
+  background: rgba(50,50,50,0.05);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ── Label ────────────────────────────────────── */
+.cursor-ring__label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7.5px; font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #333333;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.1s;
+}
+.cursor-ring--active .cursor-ring__label { opacity: 1; }
+
+/* ── Hidden ───────────────────────────────────── */
+.cursor--hidden { opacity: 0; }
