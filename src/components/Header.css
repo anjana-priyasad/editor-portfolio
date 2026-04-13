@@ -221,3 +221,22 @@
   .header__burger { display: block; }
   .header__inner  { padding: 0 24px; }
 }
+
+/* ── Mobile: hide burger + dropdown, bottom nav takes over ── */
+@media (max-width: 768px) {
+  .header__burger       { display: none; }
+  .header__mobile-menu  { display: none !important; }
+  .header__inner        {
+    height: 56px;
+    padding: 0 20px;
+    justify-content: center;
+  }
+  /* Centre the logo on mobile */
+  .header__logo {
+    gap: 10px;
+  }
+  .logo__monogram { font-size: 22px; }
+  .logo__subtitle { font-size: 7.5px; letter-spacing: 0.3em; }
+  /* Add bottom padding to page so content isn't hidden behind nav */
+  body { padding-bottom: 62px; }
+}

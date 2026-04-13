@@ -2,7 +2,9 @@
    CUSTOM CURSOR — monochromatic
 ═══════════════════════════════════════════════ */
 
-* { cursor: none !important; }
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
 
 .cursor-dot,
 .cursor-ring {

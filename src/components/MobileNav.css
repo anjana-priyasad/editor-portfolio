@@ -1,0 +1,117 @@
+/* ═══════════════════════════════════════════════
+   MOBILE BOTTOM NAV — app-like tab bar
+   Only visible on ≤ 768 px
+═══════════════════════════════════════════════ */
+
+.mobile-nav {
+  display: none;           /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: block;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 1100;
+
+    /* Frosted glass */
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(24px) saturate(1.6);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6);
+    border-top: 1px solid rgba(0,0,0,0.07);
+
+    /* iOS safe area */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .mobile-nav__track {
+    display: flex;
+    align-items: stretch;
+    height: 62px;
+  }
+
+  /* ── Each tab item ─────────────────────────── */
+  .mobile-nav__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+    background: none;
+    border: none;
+    padding: 8px 4px 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: none;
+  }
+
+  .mobile-nav__icon {
+    color: rgba(30,30,30,0.35);
+    transition: color 0.22s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
+    display: flex;
+  }
+  .mobile-nav__label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgba(30,30,30,0.35);
+    text-transform: uppercase;
+    transition: color 0.22s ease;
+    white-space: nowrap;
+  }
+
+  /* Active state */
+  .mobile-nav__item--active .mobile-nav__icon {
+    color: #111111;
+    transform: translateY(-2px) scale(1.08);
+  }
+  .mobile-nav__item--active .mobile-nav__label {
+    color: #111111;
+    font-weight: 700;
+  }
+
+  /* Contact — special dark pill */
+  .mobile-nav__item--contact {
+    flex: 0 0 72px;
+    margin: 10px 12px;
+    border-radius: 14px;
+    background: #111111;
+    padding: 6px 4px;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .mobile-nav__item--contact .mobile-nav__icon { color: rgba(255,255,255,0.85); }
+  .mobile-nav__item--contact .mobile-nav__label {
+    color: rgba(255,255,255,0.75);
+    font-weight: 600;
+  }
+  .mobile-nav__item--contact:active {
+    background: #333333;
+  }
+
+  /* Active pip dot */
+  .mobile-nav__pip {
+    position: absolute;
+    top: 6px;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: #111111;
+  }
+
+  /* Tap ripple */
+  .mobile-nav__ripple {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(0,0,0,0.06);
+    animation: nav-ripple 0.4s ease forwards;
+    pointer-events: none;
+  }
+  @keyframes nav-ripple {
+    from { opacity: 1; transform: scale(0.6); }
+    to   { opacity: 0; transform: scale(1.4); }
+  }
+}

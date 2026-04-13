@@ -1,0 +1,113 @@
+/* ═══════════════════════════════════════════════════════════
+   MOBILE — app-like overrides  (max-width: 768px only)
+   Desktop view is NOT touched by anything in this file.
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* ── Global ─────────────────────────────────── */
+  html { scroll-behavior: smooth; }
+
+  /* Hide scrollbar on mobile for cleaner app look */
+  ::-webkit-scrollbar { display: none; }
+  * { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Custom cursor hidden on touch */
+  .cursor-dot, .cursor-ring { display: none !important; }
+
+  /* ── Hero ──────────────────────────────────── */
+  .hero-section--simple { min-height: 100svh; }
+  .hero-full-img        { height: 100svh; }
+
+  .hero-overlay__eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.32em;
+    margin-bottom: 14px;
+  }
+  .hero-overlay__eyebrow-line { width: 26px; }
+
+  .hero-overlay__headline { margin-bottom: 20px; }
+
+  .hero-overlay__serif {
+    font-size: clamp(28px, 8.5vw, 46px);
+    letter-spacing: 0.08em;
+  }
+  .hero-overlay__serif--spaced { letter-spacing: 0.12em; }
+  .hero-overlay__serif--wide   { letter-spacing: 0.22em; font-size: clamp(22px, 7vw, 36px); }
+
+  .hero-overlay__script {
+    font-size: clamp(56px, 15vw, 96px);
+  }
+
+  .hero-overlay__tagline {
+    font-size: 13px;
+    max-width: 88vw;
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .hero-overlay__cta {
+    font-size: 8px;
+    padding: 13px 28px;
+    letter-spacing: 0.26em;
+  }
+  .hero-overlay__ornament { margin-bottom: 16px; }
+  .hero-overlay__orn-line { width: 36px; }
+
+  /* ── About ──────────────────────────────────── */
+  .about__bio {
+    grid-template-columns: 1fr;
+    padding: 64px 24px 52px;
+    gap: 40px;
+  }
+
+  /* ── Difference ─────────────────────────────── */
+  .difference-section { padding: 64px 24px; }
+  .difference__grid   { grid-template-columns: 1fr; gap: 28px; }
+
+  /* ── Portfolio ──────────────────────────────── */
+  .portfolio { padding: 64px 20px 56px; }
+  .portfolio__stage { aspect-ratio: 4/5; max-width: 100%; }
+  .portfolio__header { margin-bottom: 40px; }
+
+  /* ── Services ───────────────────────────────── */
+  .services { padding: 64px 24px; }
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .services__header { margin-bottom: 48px; }
+
+  /* ── Testimonials ───────────────────────────── */
+  .testimonials { padding: 64px 0 56px; }
+  .testimonials__header { padding: 0 24px; margin-bottom: 40px; }
+  .tr-card { width: 260px; padding: 18px; }
+
+  /* ── Contact overlay ────────────────────────── */
+  .contact { padding: 72px 20px 48px; }
+  .contact__inner { gap: 40px; }
+  .contact__main  { grid-template-columns: 1fr; gap: 32px; }
+  .contact__lower { grid-template-columns: 1fr; gap: 24px; }
+  .contact__form-wrap { padding: 28px 20px; }
+  .contact__portrait { max-width: 260px; margin: 0 auto; }
+
+  /* ── Footer ─────────────────────────────────── */
+  .footer {
+    padding: 40px 24px;
+    /* extra bottom padding above mobile nav */
+    padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+  }
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .footer__right  { align-items: flex-start; }
+  .footer__nav    { gap: 14px; flex-wrap: wrap; }
+
+  /* ── Section eyebrows & titles ──────────────── */
+  .section-eyebrow {
+    font-size: 8px !important;
+    letter-spacing: 0.36em !important;
+  }
+}
