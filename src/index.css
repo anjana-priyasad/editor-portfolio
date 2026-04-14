@@ -51,16 +51,26 @@ canvas { cursor: crosshair; }
 
 ::selection { background: var(--ink); color: var(--white); }
 
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: rgba(180,180,180,0.15); }
+::-webkit-scrollbar {
+  -webkit-appearance: none !important;
+  width: 4px !important;
+}
+::-webkit-scrollbar-track {
+  -webkit-appearance: none !important;
+  background: #FFFFFF !important;
+}
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
-  border-radius: 2px;
+  -webkit-appearance: none !important;
+  background-color: #222222 !important;
+  border-radius: 10px !important;
+  border: 1px solid #FFFFFF !important;
+  background-clip: padding-box !important;
+  min-height: 40px !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background-color: #000000 !important;
 }
-* { scrollbar-width: thin; scrollbar-color: #2a2a2a rgba(180,180,180,0.15); }
+
 
 /* ── Shared section-header patterns ──────────── */
 .section-eyebrow {
