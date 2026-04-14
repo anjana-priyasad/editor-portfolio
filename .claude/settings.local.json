@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pnpm init:*)"
+      "Bash(pnpm init:*)",
+      "WebFetch(domain:gayancsilca.netlify.app)"
     ]
   }
 }

@@ -36,7 +36,7 @@
   --text-light:  #888888;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-y: scroll; }
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -51,9 +51,16 @@ canvas { cursor: crosshair; }
 
 ::selection { background: var(--ink); color: var(--white); }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: rgba(180,180,180,0.15); }
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+* { scrollbar-width: thin; scrollbar-color: #2a2a2a rgba(180,180,180,0.15); }
 
 /* ── Shared section-header patterns ──────────── */
 .section-eyebrow {

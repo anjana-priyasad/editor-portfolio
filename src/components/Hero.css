@@ -444,12 +444,12 @@
 }
 .hero__scroll-label {
   font-family: 'Montserrat', sans-serif; font-size: 8px;
-  letter-spacing: 0.38em; color: rgba(100,100,100,0.4);
+  letter-spacing: 0.38em; color: rgba(255,255,255,0.45);
   text-transform: uppercase; writing-mode: vertical-rl;
 }
 .hero__scroll-bar {
   display: block; width: 1px; height: 50px;
-  background: linear-gradient(to bottom, rgba(100,100,100,0.5), transparent);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.7), transparent);
   animation: scrollDrop 2.6s ease-in-out infinite;
 }
 @keyframes scrollDrop {

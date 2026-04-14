@@ -50,7 +50,7 @@ function App() {
       </div>
 
       {/* App-like bottom nav — mobile only */}
-      <MobileNav onContactOpen={() => setContactOpen(true)} />
+      <MobileNav onContactOpen={() => setContactOpen(true)} onNavigate={navigateTo} />
 
       {/* Contact page overlay */}
       <AnimatePresence>

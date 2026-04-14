@@ -51,7 +51,7 @@ const NAV_ITEMS = [
   { id: 'contact',   label: 'Contact',   Icon: ContactIcon   },
 ];
 
-export default function MobileNav({ onContactOpen }) {
+export default function MobileNav({ onContactOpen, onNavigate }) {
   const [active, setActive] = useState('home');
   const [ripple, setRipple] = useState(null);
 
@@ -80,7 +80,11 @@ export default function MobileNav({ onContactOpen }) {
       onContactOpen();
     } else {
       setActive(item.id);
-      document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+      if (onNavigate) {
+        onNavigate(item.id);
+      } else {
+        document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
