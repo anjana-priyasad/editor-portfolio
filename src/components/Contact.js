@@ -138,10 +138,41 @@ function PampasCanvas() {
 
 /* ── Contact page overlay ────────────────────── */
 export default function Contact({ onClose }) {
-  const [form, setForm] = useState({ name:'', email:'', service:'', message:'' });
-  const [sent, setSent] = useState(false);
+  const [form, setForm]       = useState({ name:'', email:'', service:'', message:'' });
+  const [sent, setSent]       = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error,   setError]   = useState('');
+
   const onChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
-  const onSubmit = (e) => { e.preventDefault(); setSent(true); };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'fadc9406-9d0c-468e-99b8-37382672e441',
+          name:    form.name,
+          email:   form.email,
+          service: form.service,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSent(true);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Network error. Please check your connection.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   /* Lock body scroll while open */
   useEffect(() => {
@@ -229,9 +260,18 @@ export default function Contact({ onClose }) {
                         className="form-input form-textarea" value={form.message} onChange={onChange}
                         placeholder="Share the details of your wedding, your editing vision, and any reference styles you love..." />
                     </div>
-                    <button type="submit" className="form-submit">
-                      <span>Send Enquiry</span>
-                      <Send size={12} strokeWidth={2} />
+                    {error && (
+                      <p className="form-error">{error}</p>
+                    )}
+                    <button type="submit" className="form-submit" disabled={loading}>
+                      {loading ? (
+                        <span>Sending…</span>
+                      ) : (
+                        <>
+                          <span>Send Enquiry</span>
+                          <Send size={12} strokeWidth={2} />
+                        </>
+                      )}
                     </button>
                   </form>
                 )}
