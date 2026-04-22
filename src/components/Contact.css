@@ -234,10 +234,26 @@
   cursor: pointer; transition: all 0.3s ease;
   width: 100%; margin-top: 8px;
 }
-.form-submit:hover {
+.form-submit:hover:not(:disabled) {
   background: #EEEEEE;
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(255,255,255,0.15);
+}
+.form-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error message */
+.form-error {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; letter-spacing: 0.12em;
+  color: rgba(220, 100, 100, 0.85);
+  border-left: 2px solid rgba(220, 100, 100, 0.4);
+  padding: 8px 12px;
+  background: rgba(220, 100, 100, 0.06);
+  margin-bottom: 4px;
 }
 
 /* Success */
